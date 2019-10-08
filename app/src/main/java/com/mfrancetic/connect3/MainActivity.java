@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         playAgainButton = findViewById(R.id.play_again_button);
         messageTextView = findViewById(R.id.information_text_view);
-
-        playAgainButton.setVisibility(View.INVISIBLE);
-        messageTextView.setVisibility(View.INVISIBLE);
     }
 
     public void dropIn(View view) {
@@ -73,9 +71,32 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         winner = getString(R.string.red);
                     }
-                    Toast.makeText(this, winner + " " + getString(R.string.has_won), Toast.LENGTH_SHORT).show();
+                    String message = winner + " " + getString(R.string.has_won);
+                    messageTextView.setText(message);
+                    playAgainButton.setVisibility(View.VISIBLE);
+                    messageTextView.setVisibility(View.VISIBLE);
                 }
             }
         }
+    }
+
+    public void playAgain(View view) {
+        playAgainButton.setVisibility(View.INVISIBLE);
+        messageTextView.setVisibility(View.INVISIBLE);
+
+        GridLayout gridLayout = findViewById(R.id.grid_layout);
+
+        for (int i = 0; i <gridLayout.getChildCount(); i++) {
+            ImageView counter = (ImageView) gridLayout.getChildAt(i);
+            counter.setImageDrawable(null);
+        }
+
+        for (int i=0; i<gameState.length; i++) {
+            gameState[i] = 2;
+        }
+
+        activePlayer = 0;
+
+        gameActive = true;
     }
 }
