@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     // 0: yellow, 1: red
     int activePlayer = 0;
 
+    boolean gameActive = true;
+
     int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
     int[][] winningPositions = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8},
@@ -41,32 +43,38 @@ public class MainActivity extends AppCompatActivity {
 
     public void dropIn(View view) {
         ImageView counter = (ImageView) view;
-        counter.setTranslationY(-1500);
         int tappedCounter = Integer.parseInt(counter.getTag().toString());
 
-        gameState[tappedCounter] = activePlayer;
+        if (gameState[tappedCounter] == 2 && gameActive) {
 
-        if (activePlayer == yellowTag) {
-            counter.setImageResource(R.drawable.banana);
-            activePlayer = redTag;
-        } else {
-            counter.setImageResource(R.drawable.cherry);
-            activePlayer = yellowTag;
-        }
-        counter.animate().translationYBy(1500).rotation(3600).setDuration(300);
+            gameState[tappedCounter] = activePlayer;
 
-        for (int [] winningPosition : winningPositions) {
-            if (gameState[winningPosition[0]] == gameState[winningPosition[1]]
-                    && gameState[winningPosition[1]] == gameState[winningPosition[2]]
-            && gameState[winningPosition[0]] != 2) {
+            counter.setTranslationY(-1500);
 
-                String winner = "";
-                if (activePlayer == 1) {
-                    winner = getString(R.string.yellow);
-                } else {
-                    winner = getString(R.string.red);
+            if (activePlayer == yellowTag) {
+                counter.setImageResource(R.drawable.banana);
+                activePlayer = redTag;
+            } else {
+                counter.setImageResource(R.drawable.cherry);
+                activePlayer = yellowTag;
+            }
+
+            counter.animate().translationYBy(1500).rotation(3600).setDuration(300);
+
+            for (int[] winningPosition : winningPositions) {
+                if (gameState[winningPosition[0]] == gameState[winningPosition[1]]
+                        && gameState[winningPosition[1]] == gameState[winningPosition[2]]
+                        && gameState[winningPosition[0]] != 2) {
+
+                    gameActive = false;
+                    String winner = "";
+                    if (activePlayer == 1) {
+                        winner = getString(R.string.yellow);
+                    } else {
+                        winner = getString(R.string.red);
+                    }
+                    Toast.makeText(this, winner + " " + getString(R.string.has_won), Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(this, winner + " " + getString(R.string.has_won), Toast.LENGTH_SHORT).show();
             }
         }
     }
