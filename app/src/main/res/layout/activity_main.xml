@@ -40,47 +40,56 @@
         <ImageView
             android:id="@+id/grid_image_view_0_0"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_0_1"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_0_2"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_1_0"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_1_1"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_1_2"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_2_0"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_2_1"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_2_2"
             style="@style/ImageViewStyle"
-            android:src="@drawable/banana" />
+            android:onClick="setImage"
+            tools:src="@drawable/banana" />
 
     </GridLayout>
 
