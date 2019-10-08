@@ -29,11 +29,11 @@
         android:id="@+id/grid_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="3"
         android:layout_marginTop="@dimen/margin_grid_view"
+        android:background="@drawable/board"
+        android:columnCount="3"
         android:fitsSystemWindows="true"
         android:rowCount="3"
-        android:background="@drawable/board"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,57 +42,64 @@
         <ImageView
             android:id="@+id/grid_image_view_0_0"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="0"
             tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_0_1"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="1"
             tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_0_2"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="2"
             tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_1_0"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="3"
             tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_1_1"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="4"
             tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_1_2"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="5"
             tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_2_0"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="6"
             tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_2_1"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="7"
             tools:src="@drawable/banana" />
 
         <ImageView
             android:id="@+id/grid_image_view_2_2"
             style="@style/ImageViewStyle"
-            android:onClick="setImage"
+            android:onClick="dropIn"
+            android:tag="8"
             tools:src="@drawable/banana" />
-
     </GridLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

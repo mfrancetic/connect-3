@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.Random;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,41 +17,15 @@ public class MainActivity extends AppCompatActivity {
 
     private int redTag = 1;
 
-    private int yellowTag = 2;
+    private int yellowTag = 0;
 
-    private String yellowTagString = "2";
+    // 0: yellow, 1: red
+    int activePlayer = 0;
 
-    private String redTagString = "1";
+    int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
-    private ImageView imageView00;
-
-    private ImageView imageView01;
-
-    private ImageView imageView02;
-
-    private ImageView imageView10;
-
-    private ImageView imageView11;
-
-    private ImageView imageView12;
-
-    private ImageView imageView20;
-
-    private ImageView imageView21;
-
-    private ImageView imageView22;
-
-    String imageView00TagString;
-
-    String imageView01TagString;
-
-    String imageView02TagString;
-
-    int imageView00Tag;
-
-    int imageView01Tag;
-
-    int imageView02Tag;
+    int[][] winningPositions = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8},
+            {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,121 +35,39 @@ public class MainActivity extends AppCompatActivity {
         playAgainButton = findViewById(R.id.play_again_button);
         messageTextView = findViewById(R.id.information_text_view);
 
-        imageView00 = findViewById(R.id.grid_image_view_0_0);
-        imageView01 = findViewById(R.id.grid_image_view_0_1);
-        imageView02 = findViewById(R.id.grid_image_view_0_2);
-        imageView10 = findViewById(R.id.grid_image_view_1_0);
-        imageView11 = findViewById(R.id.grid_image_view_1_1);
-        imageView12 = findViewById(R.id.grid_image_view_1_2);
-        imageView20 = findViewById(R.id.grid_image_view_2_0);
-        imageView21 = findViewById(R.id.grid_image_view_2_1);
-        imageView22 = findViewById(R.id.grid_image_view_2_2);
-
-
         playAgainButton.setVisibility(View.INVISIBLE);
         messageTextView.setVisibility(View.INVISIBLE);
     }
 
-    public void setImage(View view) {
-        int id = view.getId();
-        ImageView imageView = findViewById(id);
-        imageView.setTag(id, yellowTag);
-        imageView.setImageResource(R.drawable.banana);
-        checkIfGameOver();
-    }
+    public void dropIn(View view) {
+        ImageView counter = (ImageView) view;
+        counter.setTranslationY(-1500);
+        int tappedCounter = Integer.parseInt(counter.getTag().toString());
 
-    public void checkIfGameOver() {
-        if (imageView00.getTag(imageView00.getId()) != null &&
-                imageView01.getTag(imageView01.getId()) != null &&
-                imageView02.getTag(imageView02.getId()) != null) {
-            if (imageView00.getTag(imageView00.getId()).equals(yellowTag) &&
-                    imageView01.getTag(imageView01.getId()).equals(yellowTag) &&
-                    imageView02.getTag(imageView02.getId()).equals(yellowTag)) {
-                showMessage(getString(R.string.yellow));
-            } else if (imageView00.getTag(imageView00.getId()).equals(redTag) &&
-                    imageView01.getTag(imageView01.getId()).equals(redTag) &&
-                    imageView02.getTag(imageView02.getId()).equals(redTag)) {
-                showMessage(getString(R.string.red));
-            }
+        gameState[tappedCounter] = activePlayer;
 
-        } else if (imageView10.getTag(imageView10.getId()) != null &&
-                imageView11.getTag(imageView11.getId()) != null &&
-                imageView12.getTag(imageView12.getId()) != null) {
-            if (imageView10.getTag(imageView10.getId()).equals(yellowTag) &&
-                    imageView11.getTag(imageView11.getId()).equals(yellowTag) &&
-                    imageView12.getTag(imageView12.getId()).equals(yellowTag)) {
-                showMessage(getString(R.string.yellow));
-            } else if (imageView10.getTag(imageView10.getId()).equals(redTag) &&
-                    imageView11.getTag(imageView11.getId()).equals(redTag) &&
-                    imageView12.getTag(imageView12.getId()).equals(redTag)) {
-                showMessage(getString(R.string.red));
-            }
-        } else if (imageView20.getTag(imageView20.getId()) != null &&
-                imageView21.getTag(imageView21.getId()) != null &&
-                imageView22.getTag(imageView22.getId()) != null) {
-            if (imageView20.getTag(imageView20.getId()).equals(yellowTag) &&
-                    imageView21.getTag(imageView21.getId()).equals(yellowTag) &&
-                    imageView22.getTag(imageView22.getId()).equals(yellowTag)) {
-                showMessage(getString(R.string.yellow));
-            } else if (imageView20.getTag(imageView20.getId()).equals(redTag) &&
-                    imageView21.getTag(imageView21.getId()).equals(redTag) &&
-                    imageView22.getTag(imageView22.getId()).equals(redTag)) {
-                showMessage(getString(R.string.red));
-            }
-        } else if (imageView00.getTag(imageView00.getId()) != null &&
-                imageView11.getTag(imageView11.getId()) != null &&
-                imageView22.getTag(imageView22.getId()) != null) {
-            if (imageView00.getTag(imageView00.getId()).equals(yellowTag) &&
-                    imageView11.getTag(imageView11.getId()).equals(yellowTag) &&
-                    imageView22.getTag(imageView22.getId()).equals(yellowTag)) {
-                showMessage(getString(R.string.yellow));
-            } else if (imageView00.getTag(imageView00.getId()).equals(redTag) &&
-                    imageView11.getTag(imageView11.getId()).equals(redTag) &&
-                    imageView22.getTag(imageView22.getId()).equals(redTag)) {
-                showMessage(getString(R.string.red));
-            }
-        } else if (imageView02.getTag(imageView02.getId()) != null &&
-                imageView11.getTag(imageView11.getId()) != null &&
-                imageView20.getTag(imageView20.getId()) != null) {
-            if (imageView02.getTag(imageView02.getId()).equals(yellowTag) &&
-                    imageView11.getTag(imageView11.getId()).equals(yellowTag) &&
-                    imageView20.getTag(imageView20.getId()).equals(yellowTag)) {
-                showMessage(getString(R.string.yellow));
-            } else if (imageView02.getTag(imageView02.getId()).equals(redTag) &&
-                    imageView11.getTag(imageView11.getId()).equals(redTag) &&
-                    imageView20.getTag(imageView20.getId()).equals(redTag)) {
-                showMessage(getString(R.string.red));
-            }
-        } else if (imageView01.getTag(imageView01.getId()) != null &&
-                imageView11.getTag(imageView11.getId()) != null &&
-                imageView21.getTag(imageView21.getId()) != null) {
-            if (imageView01.getTag(imageView01.getId()).equals(yellowTag) &&
-                    imageView11.getTag(imageView11.getId()).equals(yellowTag) &&
-                    imageView21.getTag(imageView21.getId()).equals(yellowTag)) {
-                showMessage(getString(R.string.yellow));
-            } else if (imageView01.getTag(imageView01.getId()).equals(redTag) &&
-                    imageView11.getTag(imageView11.getId()).equals(redTag) &&
-                    imageView21.getTag(imageView21.getId()).equals(redTag)) {
-                showMessage(getString(R.string.red));
+        if (activePlayer == yellowTag) {
+            counter.setImageResource(R.drawable.banana);
+            activePlayer = redTag;
+        } else {
+            counter.setImageResource(R.drawable.cherry);
+            activePlayer = yellowTag;
+        }
+        counter.animate().translationYBy(1500).rotation(3600).setDuration(300);
+
+        for (int [] winningPosition : winningPositions) {
+            if (gameState[winningPosition[0]] == gameState[winningPosition[1]]
+                    && gameState[winningPosition[1]] == gameState[winningPosition[2]]
+            && gameState[winningPosition[0]] != 2) {
+
+                String winner = "";
+                if (activePlayer == 1) {
+                    winner = getString(R.string.yellow);
+                } else {
+                    winner = getString(R.string.red);
+                }
+                Toast.makeText(this, winner + " " + getString(R.string.has_won), Toast.LENGTH_SHORT).show();
             }
         }
     }
-
-
-
-    private void showMessage(String winner) {
-        messageTextView.setVisibility(View.VISIBLE);
-        String message = winner + " " + getString(R.string.has_won);
-        messageTextView.setText(message);
-        playAgainButton.setVisibility(View.VISIBLE);
-        playAgainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recreate();
-            }
-        });
-
-    }
-
-
 }
