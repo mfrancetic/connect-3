@@ -6,5 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/information_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Red has won!" />
+
+    <Button
+        android:id="@+id/play_again_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/play_again"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/information_text_view" />
+
+    <GridLayout
+        android:id="@+id/grid_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:layout_marginTop="@dimen/margin_grid_view"
+        android:fitsSystemWindows="true"
+        android:rowCount="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/play_again_button">
+
+        <ImageView
+            android:id="@+id/grid_image_view_0_0"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+        <ImageView
+            android:id="@+id/grid_image_view_0_1"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+        <ImageView
+            android:id="@+id/grid_image_view_0_2"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+        <ImageView
+            android:id="@+id/grid_image_view_1_0"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+        <ImageView
+            android:id="@+id/grid_image_view_1_1"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+        <ImageView
+            android:id="@+id/grid_image_view_1_2"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+        <ImageView
+            android:id="@+id/grid_image_view_2_0"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+        <ImageView
+            android:id="@+id/grid_image_view_2_1"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+        <ImageView
+            android:id="@+id/grid_image_view_2_2"
+            style="@style/ImageViewStyle"
+            android:src="@drawable/banana" />
+
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
