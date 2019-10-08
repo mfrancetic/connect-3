@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="image_dimensions">100dp</dimen>
+    <dimen name="image_dimensions">90dp</dimen>
     <dimen name="margin_grid_view">16dp</dimen>
+    <dimen name="image_view_margin_top_bottom">20dp</dimen>
+    <dimen name="image_view_margin_left">15dp</dimen>
 </resources>

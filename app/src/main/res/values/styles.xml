@@ -9,8 +9,10 @@
     </style>
 
     <style name="ImageViewStyle">
+        <item name="android:layout_marginTop">@dimen/image_view_margin_top_bottom</item>
+        <item name="android:layout_marginBottom">@dimen/image_view_margin_top_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/image_view_margin_left</item>
         <item name="android:layout_height">@dimen/image_dimensions</item>
         <item name="android:layout_width">@dimen/image_dimensions</item>
     </style>
-
 </resources>

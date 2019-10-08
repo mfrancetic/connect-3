@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/margin_grid_view"
     tools:context=".MainActivity">
 
     <TextView
@@ -32,6 +33,7 @@
         android:layout_marginTop="@dimen/margin_grid_view"
         android:fitsSystemWindows="true"
         android:rowCount="3"
+        android:background="@drawable/board"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
