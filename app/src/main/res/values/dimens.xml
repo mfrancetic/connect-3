@@ -4,4 +4,5 @@
     <dimen name="margin_grid_view">16dp</dimen>
     <dimen name="image_view_margin_top_bottom">20dp</dimen>
     <dimen name="image_view_margin_left">15dp</dimen>
+    <dimen name="button_margin">16dp</dimen>
 </resources>
